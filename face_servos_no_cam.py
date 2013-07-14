@@ -8,7 +8,8 @@ cv.NamedWindow("camera", 1)
 capture = cv.CreateCameraCapture(0)
 
 #s = serial.Serial(port='/dev/ttyUSB0', baudrate = 9600)	#screen
-s = serial.Serial(port='/dev/ttyUSB0', baudrate = 115200) 	#arduino
+#s = serial.Serial(port='/dev/ttyACM0', baudrate = 115200) 	#arduino
+s = serial.Serial(port='/dev/ttyUSB0', baudrate = 115200) 	#FTDI
 
 xPos = 0x5A
 yPos = 0x6A
@@ -121,13 +122,6 @@ def DetectRedEyes(image, faceCascade, eyeCascade):
 					#print "Y"
 					#print new_yPos
 					yPos = new_yPos
-			#s.write(chr(yServo))	#Y servo flag
-			#height 
-
-			#s.write(chr(0xFE))
-			#s.write(chr(0x01))
-			#s.write(str(face_center))
-			
 
 		#cv.SetImageROI(image, (pt1[0],
 			#pt1[1],
@@ -159,7 +153,7 @@ while True:
 	img = cv.QueryFrame(capture)
 
 	image = DetectRedEyes(img, faceCascade, eyeCascade)
-	cv.ShowImage("camera", image)				#
-	k = cv.WaitKey(10);					#
-	if k == 'f':						#
-		break						#
+#	cv.ShowImage("camera", image)				#
+#	k = cv.WaitKey(10);					#
+#	if k == 'f':						#
+#		break						#
