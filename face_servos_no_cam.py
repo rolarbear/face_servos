@@ -146,8 +146,8 @@ def DetectRedEyes(image, faceCascade, eyeCascade):
 	cv.ResetImageROI(image)
 	return image
 
-faceCascade = cv.Load("/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml")
-eyeCascade = cv.Load("/usr/share/opencv/haarcascades/haarcascade_eye.xml")
+faceCascade = cv.Load("/usr/local/share/OpenCv/haarcascades/haarcascade_frontalface_alt.xml")
+eyeCascade = cv.Load("/usr/local/share/OpenCv/haarcascades/haarcascade_eye.xml")
 
 while True:
 	img = cv.QueryFrame(capture)
