@@ -4,7 +4,7 @@ import Image
 import serial
 import math
 
-cv.NamedWindow("camera", 1)
+#cv.NamedWindow("camera", 1)
 capture = cv.CreateCameraCapture(0)
 
 #s = serial.Serial(port='/dev/ttyUSB0', baudrate = 9600)	#screen
