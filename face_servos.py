@@ -4,14 +4,14 @@ import Image
 import serial
 import math
 
-cv.NamedWindow("camera", 1)
+#cv.NamedWindow("camera", 1)
 capture = cv.CreateCameraCapture(0)
 
 #s = serial.Serial(port='/dev/ttyUSB0', baudrate = 9600)	#screen
 s = serial.Serial(port='/dev/ttyUSB0', baudrate = 115200) 	#arduino
 
 xPos = 0x5A
-yPos = 0x6A
+yPos = 0x73
 xServo = 0x41
 yServo = 0x42
 
@@ -152,14 +152,14 @@ def DetectRedEyes(image, faceCascade, eyeCascade):
 	cv.ResetImageROI(image)
 	return image
 
-faceCascade = cv.Load("/usr/share/opencv/haarcascades/haarcascade_frontalface_alt.xml")
-eyeCascade = cv.Load("/usr/share/opencv/haarcascades/haarcascade_eye.xml")
+faceCascade = cv.Load("/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml")
+eyeCascade = cv.Load("/usr/local/share/OpenCV/haarcascades/haarcascade_eye.xml")
 
 while True:
 	img = cv.QueryFrame(capture)
 
 	image = DetectRedEyes(img, faceCascade, eyeCascade)
-	cv.ShowImage("camera", image)				#
-	k = cv.WaitKey(10);					#
-	if k == 'f':						#
-		break						#
+#	cv.ShowImage("camera", image)				#
+#	k = cv.WaitKey(10);					#
+#	if k == 'f':						#
+#		break						#
