@@ -11,11 +11,11 @@ int yVal;
 
 void setup()
 {
-  xservo.attach(11);
-  yservo.attach(10);
+  xservo.attach(10);
+  yservo.attach(6);
   
   xservo.write(90);
-  yservo.write(70);
+  yservo.write(50);
   
   Serial.begin(115200);
 }
