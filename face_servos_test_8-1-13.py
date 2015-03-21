@@ -86,7 +86,7 @@ def DetectRedEyes(image, faceCascade, eyeCascade):
 			pt2 = (int((x + w) * image_scale), int((y + h) * image_scale))	#8-1-13 change
 			#cv.Rectangle(image, pt1, pt2, cv.RGB(255, 0, 0), 3, 8, 0)
 			face_region = cv.GetSubRect(image,(x,int(y + (h/4)),w,int(h/2)))
-			#face_center = (int(x + (w/2))), (int(y + (h/2)))
+			face_center = (int(x + (w/2))), (int(y + (h/2)))
 			#print face_center
 			posBuff = 7
 			camSteps = 1
@@ -96,30 +96,30 @@ def DetectRedEyes(image, faceCascade, eyeCascade):
 					new_xPos = (xPos + camSteps)
 					#s.write(chr(xServo))
 					#s.write(chr(new_xPos))
-					print "X"
-					print new_xPos
+					#print "X"
+					#print new_xPos
 					xPos = new_xPos
 				if (int(x + (w/2)) < (width/4)) & (math.fabs(int(x + (w/2)) - (width/4)) > posBuff):
 					new_xPos = (xPos - camSteps)
 					#s.write(chr(xServo))
 					#s.write(chr(new_xPos))
-					print "X"
-					print new_xPos
+					#print "X"
+					#print new_xPos
 					xPos = new_xPos
 			if yPos > 0x32 & yPos < 0xB4:
 				if (int(y + (h/2)) > (height/4)) & (math.fabs(int(y + (h/2)) - (height/4)) > posBuff):
 					new_yPos = (yPos + camSteps)
 					#s.write(chr(yServo))
 					#s.write(chr(new_yPos))
-					print "Y"
-					print new_yPos
+					#print "Y"
+					#print new_yPos
 					yPos = new_yPos
 				if (int(y + (h/2)) < (height/4)) & (math.fabs(int(y + (h/2)) - (height/4)) > posBuff):
 					new_yPos = (yPos - camSteps)
 					#s.write(chr(yServo))
 					#s.write(chr(new_yPos))
-					print "Y"
-					print new_yPos
+					#print "Y"
+					#print new_yPos
 					yPos = new_yPos
 			#s.write(chr(yServo))	#Y servo flag
 			#height 
@@ -127,6 +127,7 @@ def DetectRedEyes(image, faceCascade, eyeCascade):
 			#s.write(chr(0xFE))
 			#s.write(chr(0x01))
 			#s.write(str(face_center))
+			print str(face_center)
 			
 
 		cv.SetImageROI(image, (pt1[0],			#8-1-13 change
