@@ -8,7 +8,7 @@ import math
 capture = cv.CreateCameraCapture(0)
 
 #s = serial.Serial(port='/dev/ttyUSB0', baudrate = 9600)	#screen
-s = serial.Serial(port='/dev/ttyUSB0', baudrate = 115200) 	#arduino
+#s = serial.Serial(port='/dev/ttyUSB0', baudrate = 115200) 	#arduino
 
 xPos = 0x5A
 yPos = 0x73
@@ -18,12 +18,12 @@ yServo = 0x42
 
 time.sleep(2);		#wait for arduino to  reset
 
-s.write(chr(0x00))
+#s.write(chr(0x00))
 
-s.write(chr(xServo))	#X servo flag
-s.write(chr(xPos))	#x servo position
-s.write(chr(yServo))	#Y servo flag
-s.write(chr(yPos))	#y servo position
+#s.write(chr(xServo))	#X servo flag
+#s.write(chr(xPos))	#x servo position
+#s.write(chr(yServo))	#Y servo flag
+#s.write(chr(yPos))	#y servo position
 
 width = None
 height = None
@@ -94,32 +94,32 @@ def DetectRedEyes(image, faceCascade, eyeCascade):
 				if (int(x + (w/2)) > (width/4)) & (math.fabs(int(x + (w/2)) - (width/4)) > posBuff):
 
 					new_xPos = (xPos + camSteps)
-					s.write(chr(xServo))
-					s.write(chr(new_xPos))
-					#print "X"
-					#print new_xPos
+					#s.write(chr(xServo))
+					#s.write(chr(new_xPos))
+					print "X"
+					print new_xPos
 					xPos = new_xPos
 				if (int(x + (w/2)) < (width/4)) & (math.fabs(int(x + (w/2)) - (width/4)) > posBuff):
 					new_xPos = (xPos - camSteps)
-					s.write(chr(xServo))
-					s.write(chr(new_xPos))
-					#print "X"
-					#print new_xPos
+					#s.write(chr(xServo))
+					#s.write(chr(new_xPos))
+					print "X"
+					print new_xPos
 					xPos = new_xPos
 			if yPos > 0x32 & yPos < 0xB4:
 				if (int(y + (h/2)) > (height/4)) & (math.fabs(int(y + (h/2)) - (height/4)) > posBuff):
 					new_yPos = (yPos + camSteps)
-					s.write(chr(yServo))
-					s.write(chr(new_yPos))
-					#print "Y"
-					#print new_yPos
+					#s.write(chr(yServo))
+					#s.write(chr(new_yPos))
+					print "Y"
+					print new_yPos
 					yPos = new_yPos
 				if (int(y + (h/2)) < (height/4)) & (math.fabs(int(y + (h/2)) - (height/4)) > posBuff):
 					new_yPos = (yPos - camSteps)
-					s.write(chr(yServo))
-					s.write(chr(new_yPos))
-					#print "Y"
-					#print new_yPos
+					#s.write(chr(yServo))
+					#s.write(chr(new_yPos))
+					print "Y"
+					print new_yPos
 					yPos = new_yPos
 			#s.write(chr(yServo))	#Y servo flag
 			#height 
